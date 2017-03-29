@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar color="energizes">
+    <ion-title>
+        {{item.title}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+<ion-card>
+
+    <img *ngIf="item.urlToImage != null" src="{{item.urlToImage}}"/>
+
+    <ion-card-content>
+      <ion-card-title>
+         {{item.title}}
+      </ion-card-title>
+      <p>
+       {{item.description}}
+      </p>
+    </ion-card-content>
+
+    <ion-row no-padding>
+      <ion-col>
+         <ion-icon name="person" item-left></ion-icon>
+            
+             <ion-note>
+                 {{item.author}}
+             </ion-note>
+             
+      </ion-col>
+      <ion-col text-center>
+      <ion-icon name="calendar" item-left></ion-icon>
+             <ion-note>
+                 {{item.publishedAt | date: 'MM-dd-yyyy'}}
+             </ion-note>
+      </ion-col>
+    </ion-row>
+ <!--<a ion-button color="energizes" block target="_blank" href="{{item.url}}">View on Reddit</a>-->
+  <a ion-button color="energizes" block target="_blank" (click)="viewInBrowser(item)">View on {{source}} .com</a>
+  </ion-card>
+
+</ion-content>
+
+
+
+
+  

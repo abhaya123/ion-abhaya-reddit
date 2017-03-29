@@ -1,0 +1,35 @@
+
+<ion-header>
+  <ion-navbar color="energizes">
+    <ion-title color="dark">
+      News in all...
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<!--<button (click)="onSelectSource('cnn')">CNN</button>
+<button (click)="onSelectSource('bbc-news')">BBC</button>-->
+<ion-item>
+<ion-label>Channels</ion-label>
+<ion-select (ionChange)="onSelectSource(item)" [(ngModel)]="item" name="item">
+      <ion-option value="bbc-news">BBC News</ion-option>
+      <ion-option value="cnn">CNN</ion-option>
+      <ion-option value="espn">ESPN</ion-option>
+      <ion-option value="entertainment-weekly">Entertainment Weekly</ion-option>
+</ion-select>
+</ion-item>
+<ion-refresher (ionRefresh)="doRefresh($event)">
+  <ion-refresher-content></ion-refresher-content>
+</ion-refresher>
+<ion-list >
+  <ion-item *ngFor="let item of items">
+    <ion-avatar *ngIf="item.urlToImage" item-left>
+    <img src="{{item.urlToImage}}">
+    </ion-avatar>
+        <h2><a (click)="viewItem(item)" color="dark">{{item.title}}</a></h2>
+        <p>{{item.description}}</p>
+       <!--<button ion-button clear item-right (click)="viewItem(item)">View</button>-->
+  </ion-item>
+</ion-list>
+</ion-content>
